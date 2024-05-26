@@ -25,7 +25,7 @@ blocks:
   language: python
   name: Save current price to postgres
   retry_config: null
-  status: failed
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:

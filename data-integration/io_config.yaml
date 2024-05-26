@@ -72,7 +72,7 @@ default:
   POSTGRES_DBNAME: data-integration
   POSTGRES_USER: admin
   POSTGRES_PASSWORD: 45@b3QQ,(lNJ
-  POSTGRES_HOST: server2.jothapunkt.de
+  POSTGRES_HOST: host.docker.internal
   POSTGRES_PORT: 5454
   # Redshift
   REDSHIFT_SCHEMA: public # Optional

@@ -16,6 +16,8 @@ services:
     volumes:
       - .:/home/src/
     restart: on-failure:5
+    networks:
+      - all
 
   postgres:
     image: postgres:latest
@@ -28,6 +30,8 @@ services:
     ports:
       - 5454:5432
     restart: unless-stopped
+    networks:
+      - all
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -39,6 +43,12 @@ services:
     depends_on:
       - postgres
     restart: unless-stopped
+    networks:
+      - all
+
+networks:
+  all:
+    driver: bridge
 
 volumes:
   postgres_data:
