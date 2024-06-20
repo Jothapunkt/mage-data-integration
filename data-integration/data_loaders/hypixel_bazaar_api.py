@@ -7,6 +7,8 @@ if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
 if 'test' not in globals():
     from mage_ai.data_preparation.decorators import test
+if 'get_secret_value' not in globals():
+    from mage_ai.data_preparation.shared.secrets import get_secret_value
 
 
 @data_loader
@@ -16,7 +18,7 @@ def load_data_from_api(*args, **kwargs):
     """
     response = requests.get("https://api.hypixel.net/v2/skyblock/bazaar",
     headers={
-        "API-Key": "e416639d-7d22-4a35-bccf-cb924e10cbb9"
+        "API-Key": get_secret_value('HypixelKey')
     })
 
     data = response.json()
