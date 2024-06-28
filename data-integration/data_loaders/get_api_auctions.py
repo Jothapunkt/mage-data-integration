@@ -67,7 +67,7 @@ def load_data_from_api(*args, **kwargs):
         if not data.get("success"):
             raise Exception(f"Expected to see 'success': true, got: {data}")
 
-        #max_page = data.get("totalPages")
+        max_page = data.get("totalPages")
         auctions = data.get("auctions")
 
         raw_auctions = raw_auctions + auctions

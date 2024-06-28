@@ -17,15 +17,24 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
     schema_name = 'skyblock'  # Specify the name of the schema to export data to
-    table_name = 'bazaar_prices'  # Specify the name of the table to export data to
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
     with Postgres.with_config(ConfigFileLoader(config_path, config_profile)) as loader:
+        table_name = 'bazaar_prices'  # Specify the name of the table to export data to
         loader.export(
             df,
             schema_name,
             table_name,
             index=False,  # Specifies whether to include index in exported table
             if_exists='append',  # Specify resolution policy if table name already exists
+        )
+
+        table_name = 'latest_bazaar_prices'  # Specify the name of the table to export data to
+        loader.export(
+            df,
+            schema_name,
+            table_name,
+            index=False,  # Specifies whether to include index in exported table
+            if_exists='replace',  # Specify resolution policy if table name already exists
         )

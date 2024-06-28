@@ -17,7 +17,7 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
     Docs: https://docs.mage.ai/design/data-loading#postgresql
     """
     schema_name = 'skyblock'  # Specify the name of the schema to export data to
-    table_name = 'auctions'  # Specify the name of the table to export data to
+    table_name = 'items'  # Specify the name of the table to export data to
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'default'
 
@@ -27,7 +27,5 @@ def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
             schema_name,
             table_name,
             index=False,  # Specifies whether to include index in exported table
-            if_exists='append',  # Specify resolution policy if table name already exists
-            unique_conflict_method='UPDATE',
-            unique_constraints=['uuid']
+            if_exists='replace',  # Specify resolution policy if table name already exists
         )

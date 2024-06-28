@@ -1,0 +1,23 @@
+active_auctions:
+  object_type: pipeline
+  object_uuid: active_auctions
+  outdated_after:
+    weeks: 1
+  repo_path: /home/src/data-integration
+  settings:
+    get_api_auctions: {}
+current_prices:
+  object_type: pipeline
+  object_uuid: current_prices
+  outdated_after:
+    seconds: 120
+    weeks: 0
+  repo_path: /home/src/data-integration
+ended_auctions:
+  object_type: pipeline
+  object_uuid: ended_auctions
+  outdated_after:
+    weeks: 1
+  repo_path: /home/src/data-integration
+  settings:
+    get_ended_auctions_from_api: {}
