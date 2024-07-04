@@ -95,7 +95,10 @@ def load_data_from_api(*args, **kwargs):
             "last_updated": raw_auction.get("last_updated")
         })
 
-    return pd.DataFrame(auctions)
+    df = pd.DataFrame(auctions)
+    df["starting_bid"] = df["starting_bid"].astype(np.int64)
+    df["highest_bid_amount"] = df["highest_bid_amount"].astype(np.int64)
+    return df
 
 
 @test

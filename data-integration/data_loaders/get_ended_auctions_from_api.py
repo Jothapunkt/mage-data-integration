@@ -1,6 +1,7 @@
 
 import io
 import pandas as pd
+import numpy as np
 import requests
 from datetime import datetime
 import re
@@ -77,7 +78,9 @@ def load_data_from_api(*args, **kwargs):
             "timestamp": datetime.utcfromtimestamp(raw_auction.get("timestamp") / 1000)
         })
 
-    return pd.DataFrame(auctions)
+    df = pd.DataFrame(auctions)
+    df["price"] = df["price"].astype(np.int64)
+    return df
 
 
 @test
