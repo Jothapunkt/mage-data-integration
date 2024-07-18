@@ -9,7 +9,10 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      USER_CODE_PATH: /home/src/${PROJECT_NAME}
+      USER_CODE_PATH: /home/src/${PROJECT_NAME}      
+      DEFAULT_OWNER_EMAIL: jakob-hoefner@web.de
+      DEFAULT_OWNER_USERNAME: jothapunkt
+
       ENV: ${ENV}
     ports:
       - 6789:6789
